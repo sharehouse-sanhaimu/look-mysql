@@ -1,8 +1,0 @@
-tunnel: 3e8d2c90-04ba-4b32-97ca-8e3cc1b02ed0
-credentials-file: /home/nonroot/.cloudflared/3e8d2c90-04ba-4b32-97ca-8e3cc1b02ed0.json
-protocol: http2
-
-ingress:
-  - hostname: look-mysql.nosse.net
-    service: http://phpmyadmin:3307
-  - service: http_status:404
