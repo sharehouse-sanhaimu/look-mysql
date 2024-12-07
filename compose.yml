@@ -1,0 +1,24 @@
+services:
+
+  cloudflare:
+    image: "cloudflare/cloudflared:latest"
+    container_name: "cloudflare"
+    volumes: ["./settings/cloudflare/prod:/home/nonroot/.cloudflared"]
+    command: tunnel run
+
+  phpmyadmin:
+    # macで動かすためにplatformを指定
+    platform: linux/amd64
+    image: phpmyadmin/phpmyadmin
+    container_name: "phpmyadmin"
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=18.183.164.220
+      - PMA_PORT=3306
+      - PMA_USER=root
+      - PMA_PASSWORD=root
+
+    volumes:
+      - ./phpmyadmin/sessions:/sessions
+    ports:
+      - 3307:80
